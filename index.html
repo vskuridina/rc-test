@@ -22,17 +22,6 @@
     var token = "";
     var adminToken = new XMLHttpRequest();
 
-//	console.log(menusObj);
-	console.log(menusObj["_embedded"]["menus"]);
-//	console.log(JSON.parse(menusObj));
-	var menusList = menusObj["_embedded"]["menus"];
-	console.log("Menus: ");
-	for(let i=0; i<menusList.length; i++) {
-		menus[menusList[i]._links.menu.href.split("/menus/")[1]] = menusList[i].description;
-		document.getElementById("MENU").innerHTML += "<option>"+menusList[i].description+"</option>";
-	}
-	init("MENU","");
-	console.log(menus);
 /*
     adminToken.onreadystatechange = function() {
         if (adminToken.readyState == 4 && adminToken.status == 200) {
@@ -95,14 +84,23 @@
     }
 
     window.onload = function() {
-       init("LOC","de");
-       init("MODE","1");
-       init("C_ID","+8(905)123-5411");
-       init("C_NAME","John Doe-Пупкин (Aurus LLC)");
-       init("TYPE","");
-       init("TITLE","");
-       init("AUTO","");
-       //init("MENU",""); //nothing to do, menus not loaded yet
+		init("LOC","de");
+		init("MODE","1");
+		init("C_ID","+8(905)123-5411");
+		init("C_NAME","John Doe-Пупкин (Aurus LLC)");
+		init("TYPE","");
+		init("TITLE","");
+		init("AUTO","");
+	   
+		//console.log(menusObj["_embedded"]["menus"]);
+		var menusList = menusObj["_embedded"]["menus"];
+		console.log("Menus: ");
+		for(let i=0; i<menusList.length; i++) {
+			menus[menusList[i]._links.menu.href.split("/menus/")[1]] = menusList[i].description;
+			document.getElementById("MENU").innerHTML += "<option>"+menusList[i].description+"</option>";
+		}
+		init("MENU","");
+		console.log(menus);
     }
 
     var RICHCALL_CALLER_ID = localStorage.getItem("C_ID");
