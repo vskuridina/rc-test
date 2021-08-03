@@ -24,12 +24,12 @@
     adminToken.onreadystatechange = function() {
         if (adminToken.readyState == 4 && adminToken.status == 200) {
             token = JSON.parse(adminToken.responseText)["access_token"];
-//            console.log("Admin token: " + token);
+            console.log("Admin token: " + token);
             var listMenus = new XMLHttpRequest();
             listMenus.onreadystatechange = function() {
                 if (listMenus.readyState == 4 && listMenus.status == 200) {
                     var menusObj = JSON.parse(listMenus.responseText)["_embedded"]["menus"];
-//                    console.log("Menus: ");
+                    console.log("Menus: ");
                     for(let i=0; i<menusObj.length; i++) {
                         menus[menusObj[i]._links.menu.href.split("/menus/")[1]] = menusObj[i].description;
                         document.getElementById("MENU").innerHTML += "<option>"+menusObj[i].description+"</option>";
