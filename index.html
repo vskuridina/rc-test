@@ -27,9 +27,9 @@
 //	console.log(JSON.parse(menusObj));
 	var menusList = menusObj["_embedded"]["menus"];
 	console.log("Menus: ");
-	for(let i=0; i<menusObj.length; i++) {
-		menus[menusObj[i]._links.menu.href.split("/menus/")[1]] = menusObj[i].description;
-		document.getElementById("MENU").innerHTML += "<option>"+menusObj[i].description+"</option>";
+	for(let i=0; i<menusList.length; i++) {
+		menus[menusList[i]._links.menu.href.split("/menus/")[1]] = menusList[i].description;
+		document.getElementById("MENU").innerHTML += "<option>"+menusList[i].description+"</option>";
 	}
 	init("MENU","");
 	console.log(menus);
