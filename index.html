@@ -3,15 +3,13 @@
 <head>
   <meta charset="utf-8">
   <title>Aurus RichCall Homepage</title>
-  <link rel="icon" type="image/png" href="/assets/icons/richcall.icon.150x150.png" sizes="150x150">
-  <link rel="icon" type="image/png" href="/assets/icons/richcall.icon.250x250.png" sizes="250x250">
-  <link rel="apple-touch-icon-precomposed" type="image/png" href="/admin/assets/icons/richcall.icon.250x250.png">
-  <meta name="msapplication-TileImage" content="/assets/icons/richcall.icon.250x250.png">
+  <link rel="icon" type="image/png" href="https://rcbox-qa.richcall.io:9443/assets/icons/richcall.icon.150x150.png" sizes="150x150">
+  <link rel="icon" type="image/png" href="https://rcbox-qa.richcall.io:9443//assets/icons/richcall.icon.250x250.png" sizes="250x250">
+  <link rel="apple-touch-icon-precomposed" type="image/png" href="https://rcbox-qa.richcall.io:9443//admin/assets/icons/richcall.icon.250x250.png">
+  <meta name="msapplication-TileImage" content="https://rcbox-qa.richcall.io:9443//assets/icons/richcall.icon.250x250.png">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <script id="RC_CUSTOM" type="text/javascript" async></script>
-
-<!--script type="text/javascript" src="https://rcbox-qa.richcall.io:9443/js/richcall.widget.js?logLevel=Debug&company-id=cdc0096e-301b-4a40-9fe6-a0b0f9dee89f&right=0&locale=ru&mode=3&width=250&themeColor=00b2ff&fontColor=22212f"></script-->
 <script type="text/javascript" src="https://rcbox-qa.richcall.io:9443/js/cobrowser.js?logLevel=DEBUG"></script>
 <script type="text/javascript" src="menus.json"></script> 
 
@@ -84,6 +82,7 @@
     }
 
     window.onload = function() {
+		init("WIDTH","300");
 		init("LOC","de");
 		init("MODE","1");
 		init("C_ID","+8(905)123-5411");
@@ -91,8 +90,7 @@
 		init("TYPE","");
 		init("TITLE","");
 		init("AUTO","");
-	   
-		//console.log(menusObj["_embedded"]["menus"]);
+		
 		var menusList = menusObj["_embedded"]["menus"];
 		console.log("Menus: ");
 		for(let i=0; i<menusList.length; i++) {
@@ -115,16 +113,16 @@
       "hidden4_name":"Maria Ivanovna"
     }
 
-    var width=300;
+    var width="width="+localStorage.getItem('WIDTH');
     var mode="mode="+localStorage.getItem('MODE');
     var locale="locale="+localStorage.getItem('LOC');
     var type=localStorage.getItem('TYPE');
     var autocall=localStorage.getItem('AUTO');
     var title="title="+localStorage.getItem('TITLE');
-    var company_id="cdc0096e-301b-4a40-9fe6-a0b0f9dee89f";
+    var company_id="company-id=cdc0096e-301b-4a40-9fe6-a0b0f9dee89f";
     var level="logLevel=Debug";
     var menu="menu-id="+localStorage.getItem('MENU');
-    var RC_SRC="https://"+RC_URL+"/js/richcall.widget.js?"+mode+"&"+level+"&themeColor=25625f&width="+width+"&fontColor=edeb40&company-id="+company_id+"&"+title+"&"+locale+"&"+type+"&"+autocall+"&"+menu;
+    var RC_SRC="https://"+RC_URL+"/js/richcall.widget.js?"+mode+"&"+level+"&themeColor=25625f&fontColor=edeb40&"+width+"&"+company_id+"&"+title+"&"+locale+"&"+type+"&"+autocall+"&"+menu;
     document.getElementById('RC_CUSTOM').src = RC_SRC;
 
 </script>
@@ -132,14 +130,14 @@
 <body>
 
   <h1 id="RC_BTN2">RichCall.</h1>
-  <b>Меню - </b><select id="MENU"><option>default</option></select><br><br>
+  <b>Меню - </b><select id="MENU"><option>default</option></select>&nbsp;<b>Заголовок - </b> <input type="text" id="TITLE"></input>  <br><br>
   <b>Локаль - </b><select id="LOC"><option>en</option><option>ru</option><option>de</option></select> &nbsp;
   <b>Режим - </b><select id="MODE"><option>1</option><option>2</option><option>3</option></select> &nbsp;
   <b>Дополнительно - </b><select id="TYPE"><option></option><option>kioskAssistant</option><option>standalone</option></select> &nbsp;
   <input type="checkbox" id="AUTO">Autocall</input>  <br><br>
   <b>Caller_ID - </b><input type="text" id="C_ID"></input> <br><br>
   <b>Caller Name - </b> <input type="text" id="C_NAME"></input>  <br><br>
-  <b>Заголовок - </b> <input type="text" id="TITLE"></input>  &nbsp;
+  <b>Ширина - </b> <input type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' id="WIDTH"></input>  &nbsp;
   <input type="submit" value="Применить" onclick="apply();">
 
   <h2 id="RC_BTN1">Seamless integration with contact center software and IP PBX</h2>
