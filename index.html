@@ -13,6 +13,7 @@
 
 <!--script type="text/javascript" src="https://rcbox-qa.richcall.io:9443/js/richcall.widget.js?logLevel=Debug&company-id=cdc0096e-301b-4a40-9fe6-a0b0f9dee89f&right=0&locale=ru&mode=3&width=250&themeColor=00b2ff&fontColor=22212f"></script-->
 <script type="text/javascript" src="https://rcbox-qa.richcall.io:9443/js/cobrowser.js?logLevel=DEBUG"></script>
+<script type="text/javascript" src="menus.json"></script> 
 
 <script>
 
@@ -21,11 +22,8 @@
     var token = "";
     var adminToken = new XMLHttpRequest();
 
-	var menusObj = require('./menus.json');console.log(menusObj);
-    fetch("./menus.json").then(response => {    return response.json(); }) .then(data => console.log(data));
 	
-	/*
-	var menusObj = JSON.parse(listMenus.responseText)["_embedded"]["menus"];
+	var menusList = JSON.parse(menusObj)["_embedded"]["menus"];
 	console.log("Menus: ");
 	for(let i=0; i<menusObj.length; i++) {
 		menus[menusObj[i]._links.menu.href.split("/menus/")[1]] = menusObj[i].description;
