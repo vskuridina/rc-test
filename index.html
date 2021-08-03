@@ -21,6 +21,21 @@
     var token = "";
     var adminToken = new XMLHttpRequest();
 
+    var json = $.getJSON("test.json", function(json) {
+		console.log(json);
+	});
+	//var listMenus = eval("(" +json.responseText + ")");
+console.log("xxx");
+	/*
+	var menusObj = JSON.parse(listMenus.responseText)["_embedded"]["menus"];
+	console.log("Menus: ");
+	for(let i=0; i<menusObj.length; i++) {
+		menus[menusObj[i]._links.menu.href.split("/menus/")[1]] = menusObj[i].description;
+		document.getElementById("MENU").innerHTML += "<option>"+menusObj[i].description+"</option>";
+	}
+	init("MENU","");
+	console.log(menus);*/
+/*
     adminToken.onreadystatechange = function() {
         if (adminToken.readyState == 4 && adminToken.status == 200) {
             token = JSON.parse(adminToken.responseText)["access_token"];
@@ -48,6 +63,7 @@
     adminToken.open("POST", "https://"+RC_URL+"/api/oauth/token?grant_type=password&username=admin&password=richcall", true);
     adminToken.setRequestHeader("authorization","Basic YWRtaW46YWRtaW5zZWNyZXQ=");
     adminToken.send();
+	*/
 
     function apply() {
          set("LOC");
