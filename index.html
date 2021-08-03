@@ -21,9 +21,9 @@
     var token = "";
     var adminToken = new XMLHttpRequest();
 
-	var menusObj = require('./menus.json');
-console.log(menusObj);
-    console.log("xxx");
+	var menusObj = require('./menus.json');console.log(menusObj);
+    fetch("./menus.json").then(response => {    return response.json(); }) .then(data => console.log(data));
+	
 	/*
 	var menusObj = JSON.parse(listMenus.responseText)["_embedded"]["menus"];
 	console.log("Menus: ");
