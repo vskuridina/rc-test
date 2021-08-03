@@ -1,0 +1,195 @@
+{
+    "_embedded": {
+        "menus": [
+            {
+                "description": "3topics 14fields",
+                "timestamp": "2019-08-01T09:11:25.582+00:00",
+                "main": false,
+                "checkCaptcha": false,
+                "adType": "INTERNAL_VIDEO",
+                "adUrl": "/storage/9efd5a64-7c73-4826-b6c7-3a89848e1fd3.webm?fileName=Volcano_Lava_Sample.webm.360p.webm",
+                "_links": {
+                    "self": {
+                        "href": "http://rcbox-qa.richcall.io:443/api/admin/menus/0cf8d5aa-7da2-4a3a-8cab-efd8fbbe80f6"
+                    },
+                    "menu": {
+                        "href": "http://rcbox-qa.richcall.io:443/api/admin/menus/0cf8d5aa-7da2-4a3a-8cab-efd8fbbe80f6"
+                    },
+                    "customFields": {
+                        "href": "http://rcbox-qa.richcall.io:443/api/admin/menus/0cf8d5aa-7da2-4a3a-8cab-efd8fbbe80f6/customFields"
+                    },
+                    "company": {
+                        "href": "http://rcbox-qa.richcall.io:443/api/admin/menus/0cf8d5aa-7da2-4a3a-8cab-efd8fbbe80f6/company"
+                    },
+                    "menuItems": {
+                        "href": "http://rcbox-qa.richcall.io:443/api/admin/menus/0cf8d5aa-7da2-4a3a-8cab-efd8fbbe80f6/menuItems"
+                    }
+                }
+            },
+            {
+                "description": "English",
+                "timestamp": "2019-09-09T07:17:23.061+00:00",
+                "main": false,
+                "checkCaptcha": false,
+                "adType": "INTERNAL_IMAGE",
+                "adUrl": "/storage/9f1633fa-a24f-478e-a770-bce3110cee93.jpg?fileName=map044.jpg",
+                "_links": {
+                    "self": {
+                        "href": "http://rcbox-qa.richcall.io:443/api/admin/menus/0de5378d-e94d-4f08-9bf0-0e87e7722747"
+                    },
+                    "menu": {
+                        "href": "http://rcbox-qa.richcall.io:443/api/admin/menus/0de5378d-e94d-4f08-9bf0-0e87e7722747"
+                    },
+                    "customFields": {
+                        "href": "http://rcbox-qa.richcall.io:443/api/admin/menus/0de5378d-e94d-4f08-9bf0-0e87e7722747/customFields"
+                    },
+                    "company": {
+                        "href": "http://rcbox-qa.richcall.io:443/api/admin/menus/0de5378d-e94d-4f08-9bf0-0e87e7722747/company"
+                    },
+                    "menuItems": {
+                        "href": "http://rcbox-qa.richcall.io:443/api/admin/menus/0de5378d-e94d-4f08-9bf0-0e87e7722747/menuItems"
+                    }
+                }
+            },
+            {
+                "description": "no_fields_1",
+                "timestamp": "2020-03-16T10:42:17.135+00:00",
+                "main": false,
+                "checkCaptcha": false,
+                "adType": "EXTERNAL_URL",
+                "adUrl": "https://www.gismeteo.ru/weather-novosibirsk-4690/",
+                "_links": {
+                    "self": {
+                        "href": "http://rcbox-qa.richcall.io:443/api/admin/menus/fad81dd6-5c11-4d05-862d-2580519578a9"
+                    },
+                    "menu": {
+                        "href": "http://rcbox-qa.richcall.io:443/api/admin/menus/fad81dd6-5c11-4d05-862d-2580519578a9"
+                    },
+                    "customFields": {
+                        "href": "http://rcbox-qa.richcall.io:443/api/admin/menus/fad81dd6-5c11-4d05-862d-2580519578a9/customFields"
+                    },
+                    "company": {
+                        "href": "http://rcbox-qa.richcall.io:443/api/admin/menus/fad81dd6-5c11-4d05-862d-2580519578a9/company"
+                    },
+                    "menuItems": {
+                        "href": "http://rcbox-qa.richcall.io:443/api/admin/menus/fad81dd6-5c11-4d05-862d-2580519578a9/menuItems"
+                    }
+                }
+            },
+            {
+                "description": "Russian",
+                "timestamp": "2019-07-29T06:21:44.689+00:00",
+                "main": true,
+                "checkCaptcha": false,
+                "adType": "INTERNAL_VIDEO",
+                "adUrl": "/storage/files/b6ee5425-af14-48f9-b3b4-e5eaa22dec09.webm",
+                "_links": {
+                    "self": {
+                        "href": "http://rcbox-qa.richcall.io:443/api/admin/menus/6f7faa59-a63d-416d-b113-59d37ed2c6cc"
+                    },
+                    "menu": {
+                        "href": "http://rcbox-qa.richcall.io:443/api/admin/menus/6f7faa59-a63d-416d-b113-59d37ed2c6cc"
+                    },
+                    "customFields": {
+                        "href": "http://rcbox-qa.richcall.io:443/api/admin/menus/6f7faa59-a63d-416d-b113-59d37ed2c6cc/customFields"
+                    },
+                    "company": {
+                        "href": "http://rcbox-qa.richcall.io:443/api/admin/menus/6f7faa59-a63d-416d-b113-59d37ed2c6cc/company"
+                    },
+                    "menuItems": {
+                        "href": "http://rcbox-qa.richcall.io:443/api/admin/menus/6f7faa59-a63d-416d-b113-59d37ed2c6cc/menuItems"
+                    }
+                }
+            },
+            {
+                "description": "single emb 0fields (kiosk)",
+                "timestamp": "2020-04-03T10:30:03.884+00:00",
+                "main": false,
+                "checkCaptcha": false,
+                "adType": "INTERNAL_IMAGE",
+                "adUrl": "/storage/a8d7bf66-c7b9-43c4-a31e-1db5d2808ecc.jpg?fileName=0_b73a7_c5876247_orig.jpg",
+                "_links": {
+                    "self": {
+                        "href": "http://rcbox-qa.richcall.io:443/api/admin/menus/d8613420-589b-488f-8c96-24d6d1094ccd"
+                    },
+                    "menu": {
+                        "href": "http://rcbox-qa.richcall.io:443/api/admin/menus/d8613420-589b-488f-8c96-24d6d1094ccd"
+                    },
+                    "customFields": {
+                        "href": "http://rcbox-qa.richcall.io:443/api/admin/menus/d8613420-589b-488f-8c96-24d6d1094ccd/customFields"
+                    },
+                    "company": {
+                        "href": "http://rcbox-qa.richcall.io:443/api/admin/menus/d8613420-589b-488f-8c96-24d6d1094ccd/company"
+                    },
+                    "menuItems": {
+                        "href": "http://rcbox-qa.richcall.io:443/api/admin/menus/d8613420-589b-488f-8c96-24d6d1094ccd/menuItems"
+                    }
+                }
+            },
+            {
+                "description": "single emb 5fields",
+                "timestamp": "2020-03-16T08:16:12.916+00:00",
+                "main": false,
+                "checkCaptcha": false,
+                "adType": "EXTERNAL_URL",
+                "adUrl": "https://gismeteo.ru/",
+                "_links": {
+                    "self": {
+                        "href": "http://rcbox-qa.richcall.io:443/api/admin/menus/1c75549b-a615-4f5b-8252-c211f05919bb"
+                    },
+                    "menu": {
+                        "href": "http://rcbox-qa.richcall.io:443/api/admin/menus/1c75549b-a615-4f5b-8252-c211f05919bb"
+                    },
+                    "customFields": {
+                        "href": "http://rcbox-qa.richcall.io:443/api/admin/menus/1c75549b-a615-4f5b-8252-c211f05919bb/customFields"
+                    },
+                    "company": {
+                        "href": "http://rcbox-qa.richcall.io:443/api/admin/menus/1c75549b-a615-4f5b-8252-c211f05919bb/company"
+                    },
+                    "menuItems": {
+                        "href": "http://rcbox-qa.richcall.io:443/api/admin/menus/1c75549b-a615-4f5b-8252-c211f05919bb/menuItems"
+                    }
+                }
+            },
+            {
+                "description": "XXtopics 4fields",
+                "timestamp": "2019-07-24T08:41:55.595+00:00",
+                "main": false,
+                "checkCaptcha": false,
+                "adType": "INTERNAL_VIDEO",
+                "adUrl": "/storage/201cf146-5ff2-4dfb-8393-47c3ded86bd4.webm?fileName=Volcano_Lava_Sample.webm.360p.webm",
+                "_links": {
+                    "self": {
+                        "href": "http://rcbox-qa.richcall.io:443/api/admin/menus/d5bc3ace-f6f5-450f-ad61-4ec81d8a6a7b"
+                    },
+                    "menu": {
+                        "href": "http://rcbox-qa.richcall.io:443/api/admin/menus/d5bc3ace-f6f5-450f-ad61-4ec81d8a6a7b"
+                    },
+                    "customFields": {
+                        "href": "http://rcbox-qa.richcall.io:443/api/admin/menus/d5bc3ace-f6f5-450f-ad61-4ec81d8a6a7b/customFields"
+                    },
+                    "company": {
+                        "href": "http://rcbox-qa.richcall.io:443/api/admin/menus/d5bc3ace-f6f5-450f-ad61-4ec81d8a6a7b/company"
+                    },
+                    "menuItems": {
+                        "href": "http://rcbox-qa.richcall.io:443/api/admin/menus/d5bc3ace-f6f5-450f-ad61-4ec81d8a6a7b/menuItems"
+                    }
+                }
+            }
+        ]
+    },
+    "_links": {
+        "self": {
+            "href": "http://rcbox-qa.richcall.io:443/api/admin/menus?page=0&size=20&sort=description,asc"
+        },
+        "profile": {
+            "href": "http://rcbox-qa.richcall.io:443/api/admin/profile/menus"
+        }
+    },
+    "page": {
+        "size": 20,
+        "totalElements": 7,
+        "totalPages": 1,
+        "number": 0
+    }
+}
