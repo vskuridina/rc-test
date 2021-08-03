@@ -22,10 +22,10 @@
     var token = "";
     var adminToken = new XMLHttpRequest();
 
-	console.log(menusObj);
+//	console.log(menusObj);
 	console.log(menusObj["_embedded"]["menus"]);
-	console.log(JSON.parse(menusObj));
-	var menusList = JSON.parse(menusObj)["_embedded"]["menus"];
+//	console.log(JSON.parse(menusObj));
+	var menusList = menusObj["_embedded"]["menus"];
 	console.log("Menus: ");
 	for(let i=0; i<menusObj.length; i++) {
 		menus[menusObj[i]._links.menu.href.split("/menus/")[1]] = menusObj[i].description;
