@@ -1,0 +1,197 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Aurus RichCall Homepage</title>
+  <link rel="icon" type="image/png" href="/assets/icons/richcall.icon.150x150.png" sizes="150x150">
+  <link rel="icon" type="image/png" href="/assets/icons/richcall.icon.250x250.png" sizes="250x250">
+  <link rel="apple-touch-icon-precomposed" type="image/png" href="/admin/assets/icons/richcall.icon.250x250.png">
+  <meta name="msapplication-TileImage" content="/assets/icons/richcall.icon.250x250.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script id="RC_CUSTOM" type="text/javascript" async></script>
+
+<script>
+
+    var RC_URL=rcbox-qa.richcall.io:9443;
+    var menus=Object(); menus[""]="default";
+    var token = "";
+    var adminToken = new XMLHttpRequest();
+
+    adminToken.onreadystatechange = function() {
+        if (adminToken.readyState == 4 && adminToken.status == 200) {
+            token = JSON.parse(adminToken.responseText)["access_token"];
+//            console.log("Admin token: " + token);
+            var listMenus = new XMLHttpRequest();
+            listMenus.onreadystatechange = function() {
+                if (listMenus.readyState == 4 && listMenus.status == 200) {
+                    var menusObj = JSON.parse(listMenus.responseText)["_embedded"]["menus"];
+//                    console.log("Menus: ");
+                    for(let i=0; i<menusObj.length; i++) {
+                        menus[menusObj[i]._links.menu.href.split("/menus/")[1]] = menusObj[i].description;
+                        document.getElementById("MENU").innerHTML += "<option>"+menusObj[i].description+"</option>";
+                    }
+                    init("MENU","");
+                    console.log(menus);
+                }
+            }
+            listMenus.open("GET", "https://"+RC_URL+"/api/admin/menus?page=0&size=100000", true);
+            listMenus.setRequestHeader("authorization","Bearer "+ token );
+            listMenus.send(null);
+
+        }
+    }
+
+    adminToken.open("POST", "https://"+RC_URL+"/api/oauth/token?grant_type=password&username=admin&password=richcall", true);
+    adminToken.setRequestHeader("authorization","Basic YWRtaW46YWRtaW5zZWNyZXQ=");
+    adminToken.send();
+
+    function apply() {
+         set("LOC");
+         set("MODE");
+         set("C_ID");
+         set("C_NAME");
+         set("TYPE");
+         set("TITLE");
+         set("AUTO");
+         set("MENU");
+         document.location.reload();
+    }
+
+    function set(item) {
+        if (item==="AUTO") {
+                localStorage.setItem(item,document.getElementById(item).checked?"autocall":"");
+        } else if (item==="MENU") {
+                localStorage.setItem(item, Object.keys(menus).find(key => menus[key] === document.getElementById(item).value));
+        } else {
+                localStorage.setItem(item,document.getElementById(item).value);
+        }
+    }
+
+    function init(item, def) {
+        var local = localStorage.getItem(item);
+        if (local===null) local=def;
+        if (item==="AUTO") document.getElementById(item).checked=(local==="autocall");
+        else if (item==="MENU") {
+                document.getElementById(item).value=menus[local];
+        } else document.getElementById(item).value=local;
+    }
+
+    window.onload = function() {
+       init("LOC","de");
+       init("MODE","1");
+       init("C_ID","+8(905)123-5411");
+       init("C_NAME","John Doe-Пупкин (Aurus LLC)");
+       init("TYPE","");
+       init("TITLE","");
+       init("AUTO","");
+       //init("MENU",""); //nothing to do, menus not loaded yet
+    }
+
+    var RICHCALL_CALLER_ID = localStorage.getItem("C_ID");
+    var RICHCALL_CALLER_NAME = localStorage.getItem("C_NAME");
+    var RICHCALL_EXTRA_ATTRIBUTES = {
+      field1: "value1",
+      field2: true,
+      field3: "Value 3",
+      "hidden1_user_agent":navigator.userAgent,
+      "hidden2_site_page":window.location.pathname,
+      "hidden3_phone":"+7(913)456-12-34",
+      "hidden4_name":"Maria Ivanovna"
+    }
+
+    var width=300;
+    var mode="mode="+localStorage.getItem('MODE');
+    var locale="locale="+localStorage.getItem('LOC');
+    var type=localStorage.getItem('TYPE');
+    var autocall=localStorage.getItem('AUTO');
+    var title="title="+localStorage.getItem('TITLE');
+    var company_id="cdc0096e-301b-4a40-9fe6-a0b0f9dee89f";
+    var level="logLevel=Debug";
+    var menu="menu-id="+localStorage.getItem('MENU');
+    var RC_SRC="https://"+RC_URL+"/js/richcall.widget.js?"+mode+"&"+level+"&themeColor=25625f&width="+width+"&fontColor=edeb40&company-id="+company_id+"&"+title+"&"+locale+"&"+type+"&"+autocall+"&"+menu;
+    document.getElementById('RC_CUSTOM').src = RC_SRC;
+
+</script>
+</head>
+<body>
+
+<script type="text/javascript" src="/js/cobrowser.js?logLevel=DEBUG"></script>
+
+https://rcbox-qa.richcall.io:9443/client/call/9f059fc8-3fd1-4049-85c5-f6d68c21a128
+
+
+  <h1 id="RC_BTN2">RichCall.</h1>
+  <b>Меню - </b><select id="MENU"><option>default</option></select><br><br>
+  <b>Локаль - </b><select id="LOC"><option>en</option><option>ru</option><option>de</option></select> &nbsp;
+  <b>Режим - </b><select id="MODE"><option>1</option><option>2</option><option>3</option></select> &nbsp;
+  <b>Дополнительно - </b><select id="TYPE"><option></option><option>kioskAssistant</option><option>standalone</option></select> &nbsp;
+  <input type="checkbox" id="AUTO">Autocall</input>  <br><br>
+  <b>Caller_ID - </b><input type="text" id="C_ID"></input> <br><br>
+  <b>Caller Name - </b> <input type="text" id="C_NAME"></input>  <br><br>
+  <b>Заголовок - </b> <input type="text" id="TITLE"></input>  &nbsp;
+  <input type="submit" value="Применить" onclick="apply();">
+
+  <h2 id="RC_BTN1">Seamless integration with contact center software and IP PBX</h2>
+  <p><a href="https://rcbox-qa.richcall.io/client?company-id=cdc0096e-301b-4a40-9fe6-a0b0f9dee89f&logLevel=Debug&callerId=8&kioskUrl=https://rcbox-qa.richcall.io">KIOSK HERE!!!!</a></p>
+  <p id="RC_BTN">RichCall is not just another "browser-to-browser video chat". It does not simply connect website visitors with video chat channel agents, though it can do it as well.</p>
+
+<p>Instead, RichCall leverages your existing contact center operations, workflows and apps to:</p>
+
+<ul>
+<li>route and queue video chat requests,
+<li>handle video chat interactions,
+<li>measure customer satisfaction and agent performance.
+</ul>
+
+<p>Only by integrating closely with the contact center software can unique business benefits be obtained:</p>
+
+<ul>
+<li>BLENDED AGENTS - your agents receive both phone calls and video chat sessions, all distributed by the same contact center app,
+<li>OMNI-CHANNEL COMPLIANCE - the video chat sessions are supplemented with contextual data which allows to identify the customer,
+<li>UNIFIED TOOLS - for recording, reporting, WFM/WFO.
+</ul>
+
+<h2>Web-collaboration powered by WebRTC and in-house expertise</h2>
+
+<p cobrowse-sensitive-data><b style="color:red">SENSITIVE PARAGRAPH:</b> RichCall leverages WebRTC technologies to provide high quality communications supported by real-time network adjustments, without the need for plugins.</p>
+
+<p>The built-in STUN/TURN-servers allow RichCall to easily cope with NAT and firewalls.</p>
+
+<p>Combined with in-house developed features such as video-conferencing, interaction recording and content-sharing (co-browsing, text chat, app sharing, snipping tool and more), RichCall offers your customers an unforgettable web-collaboration experience.</p>
+
+<p>With RichCall, your customers can interact with you using:</p>
+
+<ul>
+<li>desktop and mobile browsers,
+<li>iOS and Android apps,
+<li>on-premises video kiosks.
+</ul>
+
+<p>Even phone-initiated customer engagements can be escalated to video chat sessions 'on-the-fly'.</p>
+
+<p><a href="https://richcall.io/wp-content/uploads/2016/12/RichCall.Datasheet.pdf" xlink="href" target="_blank">Download the RichCall datasheet</a></p>
+
+<p>&copy; 2020 <a href="https://aurus5.com/richcall" title="Aurus LLC">Aurus LLC</a></p>
+
+<div>
+<p><a cobrowse-sensitive-data href="/storage/index0.html">Sensitive Link to next RC page:  /storage/index0.html</a></p>
+<input type="text" cobrowse-sensitive-data value="sensitive value"/>
+<input type="password" cobrowse-sensitive-data value="sensitive pass"/>
+<input type="text" value="visible value"/>
+<input type="submit" cobrowse-sensitive-data value="Sensitive OK"/>
+</div>
+
+<p><img width="50%" src="/storage/src/website.jpg"></p>
+
+<!--script type="text/javascript" src="/js/cobrowser.js?logLevel=DEBUG"></script-->
+<!--script type="text/javascript" src="https://rcbox-qa.richcall.io/js/richcall.widget.js?autocall&company-id=30d2fb3f-ad25-4520-ba1e-bdbe5be24a48&right=300&locale=ru&1kioskAssistant&logLevel=Debug&mode=1&standalone"></script>
+<script type="text/javascript" src="https://rcbox-qa.richcall.io/js/cobrowser.js?company-id=30d2fb3f-ad25-4520-ba1e-bdbe5be24a48"></script-->
+
+<!--iframe src="/storage/src/frame.html" allow="microphone; camera; autoplay; fullscreen" allowfullscreen style="border:0; position:fixed; top:0px; right:0px; width:500px; height:100%;"></iframe-->
+<!--script type="text/javascript" src="../../js/richcall.widget.js?logLevel=DEBUG&themeColor=ff5544&externalActor=RC_BTN1&company-id=cdc0096e-301b-4a40-9fe6-a0b0f9dee89f&width=300"></script-->
+<!--script type="text/javascript" src="https://app-ru.richcall.io/js/richcall.widget.js?logLevel=Debug&company-id=cdc0096e-301b-4a40-9fe6-a0b0f9dee89f&right=0&locale=ru&mode=3&width=250&themeColor=00b2ff&fontColor=22212f" async></script-->
+<!--script type="text/javascript" src="https://app2.richcall.io/js/richcall.widget.js?company-id=cdc0096e-301b-4a40-9fe6-a0b0f9dee89f&right=0&mode=3&width=250&themeColor=d5f3f3&fontColor=060606" async></script-->
+
+</body> </html>
+
