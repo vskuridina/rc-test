@@ -22,7 +22,7 @@
     var token = "";
     var adminToken = new XMLHttpRequest();
 
-/*
+    /*
     adminToken.onreadystatechange = function() {
         if (adminToken.readyState == 4 && adminToken.status == 200) {
             token = JSON.parse(adminToken.responseText)["access_token"];
@@ -106,15 +106,26 @@
 
     var RICHCALL_CALLER_ID = localStorage.getItem("C_ID");
     var RICHCALL_CALLER_NAME = localStorage.getItem("C_NAME");
+    
     var RICHCALL_EXTRA_ATTRIBUTES = {
       field1: "value1",
       field2: true,
       field3: "Value 3",
+      phone: "+1(234)56-78-999",
       "hidden1_user_agent":navigator.userAgent,
       "hidden2_site_page":window.location.pathname,
-      "hidden3_phone":"+7(913)456-12-34",
-      "hidden4_name":"Maria Ivanovna"
+      "hidden3_phone":"+7(913)456-12-00",
+      "hidden4_name":"Сьюзен",
+      "2bRn2b": true, "logic_url_wtf": false, "url_test": "рас рас рас", "name_v1": "test_k9", 
+      "data_agreement": true
     }
+
+    var RICHCALL_BROWSER_API = true;
+    function receiveMessage(event) {
+		if (event.origin !== "https://rcbox-qa.richcall.io:9443" || !event.data.event || event.data.event === "chat_status") return;
+		console.log("Parent window received an event: " + event.data.event + " " + event.data.sessionId + " " + event.data.errorCode);
+    }
+	window.addEventListener("message", receiveMessage, false);
 
     var width="width="+localStorage.getItem('WIDTH');
     var mode="mode="+localStorage.getItem('MODE');
