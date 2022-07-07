@@ -120,13 +120,6 @@
       "data_agreement": true
     }
 
-    var RICHCALL_BROWSER_API = true;
-    function receiveMessage(event) {
-		if (event.origin !== "https://rcbox-qa.richcall.io:9443" || !event.data.event || event.data.event === "chat_status") return;
-		console.log("Parent window received an event: " + event.data.event + " " + event.data.sessionId + " " + event.data.errorCode);
-    }
-	window.addEventListener("message", receiveMessage, false);
-
     var width="width="+localStorage.getItem('WIDTH');
     var mode="mode="+localStorage.getItem('MODE');
     var locale="locale="+localStorage.getItem('LOC');
@@ -139,11 +132,13 @@
     var RC_SRC="https://"+RC_URL+"/js/richcall.widget.js?"+mode+"&"+level+"&themeColor=11425f&fontColor=edeb40&"+width+"&"+company_id+"&"+title+"&"+locale+"&"+type+"&"+autocall+"&"+menu+"&left=200&noPreload";
     document.getElementById('RC_CUSTOM').src = RC_SRC;
 
+	var RICHCALL_BROWSER_API = true;    
 </script>
 </head>
 <body>
 
   <h1 id="RC_BTN2">RichCall.</h1>
+  <h2 id="STATUS">No active call</h2>
   <b>Меню - </b><select id="MENU"><option>default</option></select>&nbsp;<b>Заголовок - </b> <input type="text" id="TITLE"></input>  <br><br>
   <b>Локаль - </b><select id="LOC"><option>en</option><option>ru</option><option>de</option></select> &nbsp;
   <b>Режим - </b><select id="MODE"><option>1</option><option>2</option><option>3</option></select> &nbsp;
@@ -155,7 +150,7 @@
   <input type="submit" value="Применить" onclick="apply();">
 
   <h2 id="RC_BTN1">Seamless integration with contact center software and IP PBX</h2>
-  <p><a href="https://rcbox-qa.richcall.io/client?company-id=cdc0096e-301b-4a40-9fe6-a0b0f9dee89f&logLevel=Debug&callerId=8&kioskUrl=https://rcbox-qa.richcall.io">KIOSK HERE!!!!</a></p>
+  <p><a href="https://rcbox-qa.richcall.io:9443/client?company-id=cdc0096e-301b-4a40-9fe6-a0b0f9dee89f&logLevel=Debug&callerId=888&callerName=КиоскКакКиоск&kioskUrl=https://rcbox-qa.richcall.io:9443">KIOSK HERE!!!!</a></p>
   <p id="RC_BTN">RichCall is not just another "browser-to-browser video chat". It does not simply connect website visitors with video chat channel agents, though it can do it as well.</p>
 
 <p>Instead, RichCall leverages your existing contact center operations, workflows and apps to:</p>
@@ -205,6 +200,16 @@
 </div>
 
 <p><img width="50%" src="https://rcbox-qa.richcall.io:9443/storage/src/website.jpg"></p>
+
+<script>
+    function receiveMessage(event) {
+	  if (event.origin !== "https://rcbox-qa.richcall.io:9443" || !event.data.event || event.data.event === "chat_status") return;
+      var info=event.data.event + " " + event.data.sessionId + (event.data.errorCode? " " + event.data.errorCode : "");
+      console.log("Parent window received an event: " + info);
+      document.getElementById('STATUS').innerHTML=info;
+    }
+    window.addEventListener("message", receiveMessage, false);
+</script>
 
 </body> </html>
 
