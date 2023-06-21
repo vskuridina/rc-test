@@ -11,9 +11,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" href="style.css">
 
-<script id="RC_CUSTOM" type="text/javascript" async></script>
+<!--script id="RC_CUSTOM" type="text/javascript" async></script>
 <script type="text/javascript" src="https://rcbox-qa.richcall.io:9443/js/cobrowser.js?logLevel=DEBUG"></script>
-<script type="text/javascript" src="menus.json"></script> 
+<script type="text/javascript" src="menus.json"></script--> 
 
 <script>
 /*
@@ -151,7 +151,7 @@
   <input type="submit" value="Применить" onclick="apply();">
 
   <h2 id="RC_BTN1">Seamless integration with contact center software and IP PBX</h2>
-  <p><a href="https://rcbox-qa.richcall.io:9443/client?company-id=cdc0096e-301b-4a40-9fe6-a0b0f9dee89f&logLevel=Debug&callerId=888&callerName=КиоскКакКиоск&kioskUrl=https://rcbox-qa.richcall.io:9443">KIOSK HERE!!!!</a></p>
+  <!--p><a href="https://rcbox-qa.richcall.io:9443/client?company-id=cdc0096e-301b-4a40-9fe6-a0b0f9dee89f&logLevel=Debug&callerId=888&callerName=КиоскКакКиоск&kioskUrl=https://rcbox-qa.richcall.io:9443">KIOSK HERE!!!!</a></p-->
   <p id="RC_BTN">RichCall is not just another "browser-to-browser video chat". It does not simply connect website visitors with video chat channel agents, though it can do it as well.</p>
 
 <p>Instead, RichCall leverages your existing contact center operations, workflows and apps to:</p>
@@ -200,11 +200,11 @@
 <input type="submit" cobrowse-sensitive-data value="Sensitive OK"/>
 </div>
 
-<p><img width="50%" src="https://rcbox-qa.richcall.io:9443/storage/src/website.jpg"></p>
+<!--p><img width="50%" src="https://rcbox-qa.richcall.io:9443/storage/src/website.jpg"></p-->
 
 <script>
     function receiveMessage(event) {
-	  if (event.origin !== "https://rcbox-qa.richcall.io:9443" || !event.data.event || event.data.event === "chat_status") return;
+	  if (event.origin !== "https://rcbox-qa.richcall.io" || !event.data.event || event.data.event === "chat_status") return;
       var info=event.data.event + " " + event.data.sessionId + (event.data.errorCode? " " + event.data.errorCode : "");
       console.log("Parent window received an event: " + info);
       document.getElementById('STATUS').innerHTML=info;
@@ -212,7 +212,9 @@
     window.addEventListener("message", receiveMessage, false);
 </script>
 
-<script type="text/javascript" src="https://app2.richcall.io/js/richcall.widget.js?widget-code=0001-MAIN" async></script>
+<!--script type="text/javascript" src="https://app2.richcall.io/js/richcall.widget.js?widget-code=0001-MAIN" async></script-->
+<script type="text/javascript" src="https://rcbox-qa.richcall.io/js/richcall.widget.js?widget-code=0001-MAIN" async></script>
+<script type="text/javascript" src="https://rcbox-qa.richcall.io/js/cobrowser.js" async></script>
 
 </body> </html>
 
