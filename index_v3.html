@@ -11,7 +11,46 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" href="style.css">
 
+<script id="RC_CUSTOM" type="text/javascript" async></script>
+<script type="text/javascript" src="https://rcbox-qa.richcall.io:9443/js/cobrowser.js?logLevel=DEBUG"></script>
+<script type="text/javascript" src="menus.json"></script>
+
 <script>
+
+    var RC_URL="rcbox-qa.richcall.io:9443";
+    var menus=Object(); menus[""]="default";
+    var token = "";
+    var adminToken = new XMLHttpRequest();
+
+    /*
+    adminToken.onreadystatechange = function() {
+        if (adminToken.readyState == 4 && adminToken.status == 200) {
+            token = JSON.parse(adminToken.responseText)["access_token"];
+            console.log("Admin token: " + token);
+            var listMenus = new XMLHttpRequest();
+            listMenus.onreadystatechange = function() {
+                if (listMenus.readyState == 4 && listMenus.status == 200) {
+                    var menusObj = JSON.parse(listMenus.responseText)["_embedded"]["menus"];
+                    console.log("Menus: ");
+                    for(let i=0; i<menusObj.length; i++) {
+                        menus[menusObj[i]._links.menu.href.split("/menus/")[1]] = menusObj[i].description;
+                        document.getElementById("MENU").innerHTML += "<option>"+menusObj[i].description+"</option>";
+                    }
+                    init("MENU","");
+                    console.log(menus);
+                }
+            }
+            listMenus.open("GET", "https://"+RC_URL+"/api/admin/menus?page=0&size=100000", true);
+            listMenus.setRequestHeader("authorization","Bearer "+ token );
+            listMenus.send(null);
+
+        }
+    }
+
+    adminToken.open("POST", "https://"+RC_URL+"/api/oauth/token?grant_type=password&username=admin&password=richcall", true);
+    adminToken.setRequestHeader("authorization","Basic YWRtaW46YWRtaW5zZWNyZXQ=");
+    adminToken.send();
+	*/
 
     function apply() {
          set("LOC");
@@ -46,11 +85,15 @@
     }
 
     window.onload = function() {
+		init("WIDTH","300");
+		init("LOC","de");
+		init("MODE","1");
 		init("C_ID","+8(905)123-5411");
 		init("C_NAME","John Doe-Пупкин (Aurus LLC)");
+		init("TYPE","");
+		init("TITLE","");
+		init("AUTO","");
 		
-		//Todo: custom queues
-		/*
 		var menusList = menusObj["_embedded"]["menus"];
 		console.log("Menus: ");
 		for(let i=0; i<menusList.length; i++) {
@@ -59,7 +102,6 @@
 		}
 		init("MENU","");
 		console.log(menus);
-		*/
     }
 
     var RICHCALL_CALLER_ID = localStorage.getItem("C_ID");
@@ -78,6 +120,20 @@
       "data_agreement": true
     }
 
+    var width="width="+localStorage.getItem('WIDTH');
+    var mode="mode="+localStorage.getItem('MODE');
+    var locale="locale="+localStorage.getItem('LOC');
+    var type=localStorage.getItem('TYPE');
+    var autocall=localStorage.getItem('AUTO');
+    var title="title="+localStorage.getItem('TITLE');
+    var company_id="company-id=cdc0096e-301b-4a40-9fe6-a0b0f9dee89f";
+    var level="logLevel=Debug";
+    var menu="menu-id="+localStorage.getItem('MENU');
+    var RC_SRC="https://"+RC_URL+"/js/richcall.widget.js?"+mode+"&"+level+"&themeColor=11425f&fontColor=edeb40&"+width+"&"+company_id+"&"+title+"&"+locale+"&"+type+"&"+autocall+"&"+menu+"&left=200&noPreload";
+    document.getElementById('RC_CUSTOM').src = RC_SRC;
+
+	var RICHCALL_BROWSER_API = true;    
+
 </script>
 </head>
 <body>
@@ -95,6 +151,7 @@
   <input type="submit" value="Применить" onclick="apply();">
 
   <h2 id="RC_BTN1">Seamless integration with contact center software and IP PBX</h2>
+  <p><a href="https://rcbox-qa.richcall.io:9443/client?company-id=cdc0096e-301b-4a40-9fe6-a0b0f9dee89f&logLevel=Debug&callerId=888&callerName=КиоскКакКиоск&kioskUrl=https://rcbox-qa.richcall.io:9443">KIOSK HERE!!!!</a></p>
   <p id="RC_BTN">RichCall is not just another "browser-to-browser video chat". It does not simply connect website visitors with video chat channel agents, though it can do it as well.</p>
 
 <p>Instead, RichCall leverages your existing contact center operations, workflows and apps to:</p>
@@ -143,7 +200,7 @@
 <input type="submit" cobrowse-sensitive-data value="Sensitive OK"/>
 </div>
 
-<!--p><img width="50%" src="https://rcbox-qa.richcall.io/storage/src/website.jpg"></p-->
+<p><img width="50%" src="https://rcbox-qa.richcall.io:9443/storage/src/website.jpg"></p>
 
 <script>
     function receiveMessage(event) {
@@ -154,9 +211,6 @@
     }
     window.addEventListener("message", receiveMessage, false);
 </script>
-
-<script type="text/javascript" src="https://rcbox-qa.richcall.io/js/richcall.widget.js?widget-code=0001-MAIN" async></script>
-<script type="text/javascript" src="https://rcbox-qa.richcall.io/js/cobrowser.js" async></script>
 
 </body> </html>
 
