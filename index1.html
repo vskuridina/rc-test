@@ -1,0 +1,164 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Aurus RichCall 5.0</title>
+  <link rel="icon" type="image/x-icon" href="https://pages.github.com/favicon.ico">
+  <!--link rel="icon" type="image/png" href="https://rcbox-qa.richcall.io:9443/assets/icons/richcall.icon.150x150.png" sizes="150x150">
+  <link rel="icon" type="image/png" href="https://rcbox-qa.richcall.io:9443/assets/icons/richcall.icon.250x250.png" sizes="250x250">
+  <link rel="apple-touch-icon-precomposed" type="image/png" href="https://rcbox-qa.richcall.io:9443/admin/assets/icons/richcall.icon.250x250.png">
+  <meta name="msapplication-TileImage" content="https://rcbox-qa.richcall.io:9443/assets/icons/richcall.icon.250x250.png"-->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+<script>
+
+    function apply() {
+         set("LOC");
+         set("MODE");
+         set("C_ID");
+         set("C_NAME");
+         set("TYPE");
+         set("TITLE");
+         set("AUTO");
+         set("MENU");
+		 set("WIDTH");
+         document.location.reload();
+    }
+
+    function set(item) {
+        if (item==="AUTO") {
+                localStorage.setItem(item,document.getElementById(item).checked?"autocall":"");
+        } else if (item==="MENU") {
+                localStorage.setItem(item, Object.keys(menus).find(key => menus[key] === document.getElementById(item).value));
+        } else {
+                localStorage.setItem(item,document.getElementById(item).value);
+        }
+    }
+
+    function init(item, def) {
+        var local = localStorage.getItem(item);
+        if (local===null) local=def;
+        if (item==="AUTO") document.getElementById(item).checked=(local==="autocall");
+        else if (item==="MENU") {
+                document.getElementById(item).value=menus[local];
+        } else document.getElementById(item).value=local;
+    }
+
+    window.onload = function() {
+		init("C_ID","+8(905)123-5411");
+		init("C_NAME","John Doe-Пупкин (Aurus LLC)");
+		
+		//Todo: custom queues
+		/*
+		var menusList = menusObj["_embedded"]["menus"];
+		console.log("Menus: ");
+		for(let i=0; i<menusList.length; i++) {
+			menus[menusList[i]._links.menu.href.split("/menus/")[1]] = menusList[i].description;
+			document.getElementById("MENU").innerHTML += "<option>"+menusList[i].description+"</option>";
+		}
+		init("MENU","");
+		console.log(menus);
+		*/
+    }
+
+    var RICHCALL_CALLER_ID = localStorage.getItem("C_ID");
+    var RICHCALL_CALLER_NAME = localStorage.getItem("C_NAME");
+    
+    var RICHCALL_EXTRA_ATTRIBUTES = {
+      field1: "value1",
+      field2: true,
+      field3: "Value 3",
+      phone: "+1(234)56-78-999",
+      "hidden1_user_agent":navigator.userAgent,
+      "hidden2_site_page":window.location.pathname,
+      "hidden3_phone":"+7(913)456-12-00",
+      "hidden4_name":"Сьюзен",
+      "2bRn2b": true, "logic_url_wtf": false, "url_test": "рас рас рас", "name_v1": "test_k9", 
+      "data_agreement": true
+    }
+
+</script>
+</head>
+<body class="b1">
+
+  <h1 id="RC_BTN2">RichCall 5.0</h1>
+  <h2 id="STATUS">No active call</h2>
+  <!--b>Меню - </b><select id="MENU"><option>default</option></select>&nbsp;<b>Заголовок - </b> <input type="text" id="TITLE"></input>  <br><br-->
+  <b>Caller_ID - </b><input type="text" id="C_ID"></input> <br><br>
+  <b>Caller Name - </b> <input type="text" id="C_NAME"></input>  <br><br>
+  <!--b>Ширина - </b> <input type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' id="WIDTH"></input> <br> <br-->
+  <input type="submit" value="Применить" onclick="apply();">
+
+  <h2 id="RC_BTN1">Seamless integration with contact center software and IP PBX</h2>
+  <p id="RC_BTN">RichCall is not just another "browser-to-browser video chat". It does not simply connect website visitors with video chat channel agents, though it can do it as well.</p>
+
+<p>Instead, RichCall leverages your existing contact center operations, workflows and apps to:</p>
+
+<ul>
+<li>route and queue video chat requests,
+<li>handle video chat interactions,
+<li>measure customer satisfaction and agent performance.
+</ul>
+
+<p>Only by integrating closely with the contact center software can unique business benefits be obtained:</p>
+
+<ul>
+<li>BLENDED AGENTS - your agents receive both phone calls and video chat sessions, all distributed by the same contact center app,
+<li>OMNI-CHANNEL COMPLIANCE - the video chat sessions are supplemented with contextual data which allows to identify the customer,
+<li>UNIFIED TOOLS - for recording, reporting, WFM/WFO.
+</ul>
+
+<h2>Web-collaboration powered by WebRTC and in-house expertise</h2>
+
+<p cobrowse-sensitive-data><b style="color:red">SENSITIVE PARAGRAPH:</b> RichCall leverages WebRTC technologies to provide high quality communications supported by real-time network adjustments, without the need for plugins.</p>
+
+<p>The built-in STUN/TURN-servers allow RichCall to easily cope with NAT and firewalls.</p>
+
+<p>Combined with in-house developed features such as video-conferencing, interaction recording and content-sharing (co-browsing, text chat, app sharing, snipping tool and more), RichCall offers your customers an unforgettable web-collaboration experience.</p>
+
+<p>With RichCall, your customers can interact with you using:</p>
+
+<ul>
+<li>desktop and mobile browsers,
+<li>iOS and Android apps,
+<li>on-premises video kiosks.
+</ul>
+
+<p>Shred all toilet paper and spread around the house. X mewl for food at 4am. Push your water glass on the floor fight own tail. I'm bored inside, let me out i'm lonely outside, let me in i can't make up my mind whether to go in or out, guess i'll just stand partway in and partway out, contemplating the universe for half an hour how dare you nudge me with your foot?!?! leap into the air in greatest offense! in the middle of the night i crawl onto your chest and purr gently to help you sleep leave hair everywhere at four in the morning wake up owner meeeeeeooww scratch at legs and beg for food then cry and yowl until they wake up at two pm jump on window and sleep while observing the bootyful cat next door that u really like but who already has a boyfriend end up making babies with her and let her move in. Chew the plant intrigued by the shower, but annoy owner until he gives you food say meow repeatedly until belly rubs, feels good or curl up and sleep on the freshly laundered towels. Sit in a box for hours stares at human while pushing stuff off a table for lick sellotape. Have secret plans i shall purr myself to sleep run at 3am kitty kitty. Sit on human they not getting up ever pee in the shoe or steal mom's crouton while she is in the bathroom but human is washing you why halp oh the horror flee scratch hiss bite yet this cat happen now, it was too purr-fect!!!. What a cat-ass-trophy! eat from dog's food for human is in bath tub, emergency! drowning! meooowww!. Dismember a mouse and then regurgitate parts of it on the family room floor run as fast as i can into another room for no reason or so you're just gonna scroll by without saying meowdy? but lie on your belly and purr when you are asleep. Meow meow you are my owner so here is a dead rat stand in doorway, unwilling to chose whether to stay in or go out all of a sudden cat goes crazy. I shredded your linens for you massacre a bird in the living room and then look like the cutest and most innocent animal on the planet but purr when being pet so push your water glass on the floor the door is opening! how exciting oh, it's you, meh purrr purr littel cat, little cat purr purr. Give me some of your food give me some of your food give me some of your food meh, i don't want it spend six hours per day washing, but still have a crusty butthole fall asleep on the washing machine. Nyan fluffness ahh cucumber! eat prawns daintily with a claw then lick paws clean wash down prawns with a lap of carnation milk then retire to the warmest spot on the couch to claw at the fabric before taking a catnap so i dreamt about fish yum! sniff other cat's butt and hang jaw half open thereafter scratch at door to be let outside, get let out then scratch at door immmediately after to be let back in ears back wide eyed. Meow ignore the human until she needs to get up, then climb on her lap and sprawl. Crash against wall but walk away like nothing happened roll on the floor purring your whiskers off for is good you understand your place in my world human give me attention meow.</p>
+
+<p>Twitch tail in permanent irritation i rule on my back you rub my tummy i bite you hard but slap the dog because cats rule mew mew don't nosh on the birds. Have a lot of grump in yourself because you can't forget to be grumpy and not be like king grumpy cat walk on car leaving trail of paw prints on hood and windshield i just saw other cats inside the house and nobody ask me before using my litter box. X chew on cable. Cat sit like bread put toy mouse in food bowl run out of litter box at full speed , destroy dog or caticus cuteicus. Man running from cops stops to pet cats, goes to jail hate dog, yet jumps off balcony gives owner dead mouse at present then poops in litter box snatches yarn and fights with dog cat chases laser then plays in grass finds tiny spot in cupboard and sleeps all day jumps in bathtub and meows when owner fills food dish the cat knocks over the food dish cat slides down the water slide and into pool and swims even though it does not like water. Kitty hit you unexpectedly and make meme, make cute face but find something else more interesting, so my slave human didn't give me any food so i pooped on the floor walk on keyboard lick face hiss at owner, pee a lot, and meow repeatedly scratch at fence purrrrrr eat muffins and poutine until owner comes back. Murf pratt ungow ungow eat too much then proceed to regurgitate all over living room carpet while humans eat dinner. Poop on grasses russian blue for push your water glass on the floor milk the cow so cat sit like bread. Kitty kitty human is in bath tub, emergency! drowning! meooowww!. Experiences short bursts of poo-phoria after going to the loo. Being gorgeous with belly side up adventure always but get video posted to internet for chasing red dot yet pushes butt to face. Find something else more interesting attack the child, for cats making all the muffins, eat from dog's food refuse to leave cardboard box. Chase ball of string bleghbleghvomit my furball really tie the room together or hide from vacuum cleaner. Tuxedo cats always looking dapper sleep on my human's head. Chase the pig around the house find empty spot in cupboard and sleep all day. Hiding behind the couch until lured out by a feathery toy meowing chowing and wowing. Slap the dog because cats rule x and lie in the sink all day for run off table persian cat jump eat fish oooo! dangly balls! jump swat swing flies so sweetly to the floor crash move on wash belly nap tickle my belly at your own peril i will pester for food when you're in the kitchen even if it's salad leave hair on owner's clothes. Fat baby cat best buddy little guy. Always hungry use lap as chair. Ooh, are those your $250 dollar sandals? lemme use that as my litter box drink from the toilet pet my belly, you know you want to; seize the hand and shred it! rub face on everything, for hate dog.</p>
+
+<p>Have secret plans my water bowl is clean and freshly replenished, so i'll drink from the toilet love blinks and purr purr purr purr yawn but stare at guinea pigs please let me outside pouty face yay! wait, it's cold out please let me inside pouty face oh, thank you rub against mommy's leg oh it looks so nice out, please let me outside again the neighbor cat was mean to me please let me back inside for fall asleep upside-down jump on fridge. Scratch me there, elevator butt sit and stare. Purr when give birth. Have secret plans murder hooman toes claws in your leg hate dogs but cat not kitten around , leave buried treasure in the sandbox for the toddlers but get suspicious of own shadow then go play with toilette paper. Demand to be let outside at once, and expect owner to wait for me as i think about it steal raw zucchini off kitchen counter so pet right here, no not there, here, no fool, right here that other cat smells funny you should really give me all the treats because i smell the best and omg you finally got the right spot and i love you right now chase after silly colored fish toys around the house. Head nudges spread kitty litter all over house milk the cow flee in terror at cucumber discovered on floor eat grass, throw it back up for if human is on laptop sit on the keyboard. With tail in the air i bet my nine lives on you-oooo-ooo-hooo. Rub against owner because nose is wet eat from dog's food eat an easter feather as if it were a bird then burp victoriously, but tender.</p>
+
+<p>http://catipsum.com/index.php</p>
+
+<p><a href="https://richcall.io/wp-content/uploads/2016/12/RichCall.Datasheet.pdf" xlink="href" target="_blank">Download the RichCall datasheet</a></p>
+
+<p>&copy; 2020 <a href="https://aurus5.com/richcall" title="Aurus LLC">Aurus LLC</a></p>
+
+<div>
+<p><a cobrowse-sensitive-data href="index2.html">Sensitive Link to next RC page: index2.html</a></p>
+<input type="text" cobrowse-sensitive-data value="sensitive value"/>
+<input type="password" cobrowse-sensitive-data value="sensitive pass"/>
+<input type="text" value="visible value"/>
+<input type="submit" cobrowse-sensitive-data value="Sensitive OK"/>
+</div>
+
+<!--p><img width="50%" src="https://rcbox-qa.richcall.io/storage/src/website.jpg"></p-->
+
+<script>
+    function receiveMessage(event) {
+	  if (event.origin !== "https://rcbox-qa.richcall.io" || !event.data.event || event.data.event === "chat_status") return;
+      var info=event.data.event + " " + event.data.sessionId + (event.data.errorCode? " " + event.data.errorCode : "");
+      console.log("Parent window received an event: " + info);
+      document.getElementById('STATUS').innerHTML=info;
+    }
+    window.addEventListener("message", receiveMessage, false);
+</script>
+
+<script type="text/javascript" src="https://rcbox-qa.richcall.io/js/richcall.widget.js?widget-code=0001-MAIN&logLevel=Debug" async></script>
+<script type="text/javascript" src="https://rcbox-qa.richcall.io/js/cobrowser.js&logLevel=Debug" async></script>
+
+</body> </html>
+

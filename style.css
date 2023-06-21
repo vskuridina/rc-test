@@ -2,6 +2,14 @@ body {
   background-color: lightblue;
 }
 
+body.b1 {
+  background-color: #AAF0D1;
+}
+
+body.b2 {
+  background-color: #F3E5AB;
+}
+
 h1,h2,h3 {
 	font-color: #5eb5ce;
 }
