@@ -16,12 +16,12 @@
 <script type="text/javascript" src="menus.json"></script> 
 
 <script>
-
+/*
     var RC_URL="rcbox-qa.richcall.io:9443";
     var menus=Object(); menus[""]="default";
     var token = "";
     var adminToken = new XMLHttpRequest();
-
+*/
     /*
     adminToken.onreadystatechange = function() {
         if (adminToken.readyState == 4 && adminToken.status == 200) {
@@ -83,7 +83,7 @@
                 document.getElementById(item).value=menus[local];
         } else document.getElementById(item).value=local;
     }
-
+/*
     window.onload = function() {
 		init("WIDTH","300");
 		init("LOC","de");
@@ -103,7 +103,7 @@
 		init("MENU","");
 		console.log(menus);
     }
-
+*/
     var RICHCALL_CALLER_ID = localStorage.getItem("C_ID");
     var RICHCALL_CALLER_NAME = localStorage.getItem("C_NAME");
     
@@ -119,7 +119,7 @@
       "2bRn2b": true, "logic_url_wtf": false, "url_test": "рас рас рас", "name_v1": "test_k9", 
       "data_agreement": true
     }
-
+/*
     var width="width="+localStorage.getItem('WIDTH');
     var mode="mode="+localStorage.getItem('MODE');
     var locale="locale="+localStorage.getItem('LOC');
@@ -133,6 +133,7 @@
     document.getElementById('RC_CUSTOM').src = RC_SRC;
 
 	var RICHCALL_BROWSER_API = true;    
+*/
 </script>
 </head>
 <body>
@@ -210,6 +211,8 @@
     }
     window.addEventListener("message", receiveMessage, false);
 </script>
+
+<script type="text/javascript" src="https://app2.richcall.io/js/richcall.widget.js?widget-code=0001-MAIN" async></script>
 
 </body> </html>
 
