@@ -145,7 +145,7 @@
 
 <script>
     function receiveMessage(event) {
-	  if (event.origin !== "https://rcbox-qa.richcall.io" || !event.data.event || event.data.event === "chat_status") return;
+	  if (event.origin !== "https://rcbox-qa.richcall.io:9443" || !event.data.event || event.data.event === "chat_status") return;
       var info=event.data.event + " " + event.data.sessionId + (event.data.errorCode? " " + event.data.errorCode : "");
       console.log("Parent window received an event: " + info);
       document.getElementById('STATUS').innerHTML=info;
