@@ -44,6 +44,7 @@ function receiveMessage(event) {
 		chatIsClosed = true;
 		setLang = true;
 	} else if (event.data.command === 'open_chat') {
+	console.log('____opened');
 		chatIsClosed = false;
 	} else if (event.data.command === 'chat_preloaded') {
 		if (setLang) {
