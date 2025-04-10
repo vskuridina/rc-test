@@ -36,17 +36,18 @@ function setRcChatLanguage() {
 }
 
 function receiveMessage(event) {
-console.log(event);
-	if (event.origin !== '<richcall_origin>') {
+	console.log(event);
+/*	if (event.origin !== '<richcall_origin>') {
 		return;
 	}
-
+*/
 	if (event.data.command === 'close_chat') {
 		chatIsClosed = true;
 		setLang = true;
 	} else if (event.data.command === 'open_chat') {
-	console.log('____opened');
 		chatIsClosed = false;
+		console.log('____opened');
+
 	} else if (event.data.command === 'chat_preloaded') {
 		if (setLang) {
 			setRcChatLanguage();
