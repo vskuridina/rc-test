@@ -16,10 +16,13 @@
 var rcChatUrl;
 var setLang = true;
 var locale = 'ru';
+var chatIsClosed = true;
 
 function setLocale(loc) {
 	locale = loc;
-	setRcChatLanguage();
+	if (chatIsClosed) {
+		setRcChatLanguage();
+	}
 }
 
 function setRcChatLanguage() {
@@ -38,7 +41,10 @@ function receiveMessage(event) {
 	}
 	
 	if (event.data.command === 'close_chat') {
+		chatIsClosed = true;
 		setLang = true;
+	} else if (event.data.command === 'open_chat') {
+		chatIsClosed = false;
 	} else if (event.data.command === 'chat_preloaded') {
 		if (setLang) {
 			setRcChatLanguage();
