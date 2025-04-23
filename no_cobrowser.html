@@ -17,7 +17,10 @@ var locale = 'ru';
 var chatIsClosed = true;
 
 function setLocale(loc) {
-console.log(loc);
+	if (locale == loc) {
+		return;
+	}
+	console.log('setLocale: ' + loc);
 	locale = loc;
 	if (chatIsClosed) {
 		setRcChatLanguage();
