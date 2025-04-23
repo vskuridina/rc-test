@@ -46,7 +46,7 @@ console.log(event);
 	if (event.data.command === 'close_chat') {
 		chatIsClosed = true;
 		setLang = true;
-	} else if (event.data.command === 'activate_chat') {
+	} else if (event.data.command === 'open_chat') {
 	console.log('1');
 		chatIsClosed = false;
 	} else if (event.data.command === 'chat_preloaded') {
