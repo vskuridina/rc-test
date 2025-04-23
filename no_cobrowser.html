@@ -55,17 +55,20 @@ window.addEventListener("message", receiveMessage, false);
 </script>
 </head>
 <body  class="b2">
-<div align = center>
-  <h1>RichCall</h1>
-  <b>Выберите язык: </b><select onchange="if (this) setLocale(this);><option value="">select language</option><option value='kk'>kk</option><option value='ru'>ru</option></select>
-  <br><br>
-  <button id="RC_BTN">
-	<img style="padding-top:30px;width:50px;" src="https://rcbox-qa.richcall.io:9443/storage/fb747aa2-d217-434b-9bd0-3e46742c930a.svg?fileName=icons8-%D0%BC%D1%83%D0%B7%D1%8B%D0%BA%D0%B0-150_-xxhdpi_.svg">
-	<h2>Начать звонок</h2>
-  </button>
-  <br><br>
-
-<script type="text/javascript" src="https://rcbox-qa.richcall.io:9443/js/richcall.widget.js?externalActor=RC_BTN&widget-code=0001-MAIN&logLevel=Debug" async></script>
-<div>
-</body> </html>
+	<div align = center>
+		<h1>RichCall</h1>
+		<b>Выберите язык: </b>
+		<select onchange="if (this) setLocale(this);">
+			<option value='ru'>ru</option>
+			<option value='kk'>kk</option>
+		</select>
+		<br><br>
+		<button id="RC_BTN">
+			<img style="padding-top:30px;width:50px;" src="https://rcbox-qa.richcall.io:9443/storage/fb747aa2-d217-434b-9bd0-3e46742c930a.svg?fileName=icons8-%D0%BC%D1%83%D0%B7%D1%8B%D0%BA%D0%B0-150_-xxhdpi_.svg">
+			<h2>Начать звонок</h2>
+		</button>
+		<script type="text/javascript" src="https://rcbox-qa.richcall.io:9443/js/richcall.widget.js?externalActor=RC_BTN&widget-code=0001-MAIN&logLevel=Debug" async></script>
+	<div>
+</body>
+</html>
 
