@@ -10,15 +10,14 @@
   <meta name="msapplication-TileImage" content="https://rcbox-qa.richcall.io:9443/assets/icons/richcall.icon.250x250.png"-->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" href="style.css">
-
 <script>
-
 var rcChatUrl;
 var setLang = true;
 var locale = 'ru';
 var chatIsClosed = true;
 
 function setLocale(loc) {
+console.log(loc);
 	locale = loc;
 	if (chatIsClosed) {
 		setRcChatLanguage();
@@ -28,11 +27,11 @@ function setLocale(loc) {
 function setRcChatLanguage() {
 	if (!rcChatUrl) {
 		rcChatUrl = document.getElementById('rc_chat_frame')?.src;
+		if (!rcChatUrl) return;
 	}
-	
+	console.log(locale);
 	document.getElementById('rc_chat_frame').src = rcChatUrl + '&locale=' + locale ;
 	setLang = false;
-	
 }
 
 function receiveMessage(event) {
@@ -51,6 +50,7 @@ function receiveMessage(event) {
 		}
 	}
 }
+
 window.addEventListener("message", receiveMessage, false);
 </script>
 </head>
@@ -58,7 +58,7 @@ window.addEventListener("message", receiveMessage, false);
 	<div align = center>
 		<h1>RichCall</h1>
 		<b>Выберите язык: </b>
-		<select onchange="if (this) setLocale(this);">
+		<select onchange="if (this.value) setLocale(this.value);">
 			<option value='ru'>ru</option>
 			<option value='kk'>kk</option>
 		</select>
