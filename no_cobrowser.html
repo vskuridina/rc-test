@@ -32,7 +32,6 @@ function setRcChatLanguage() {
 		rcChatUrl = document.getElementById('rc_chat_frame')?.src;
 		if (!rcChatUrl) return;
 	}
-	console.log(locale);
 	document.getElementById('rc_chat_frame').src = rcChatUrl + '&locale=' + locale ;
 	setLang = false;
 }
@@ -47,7 +46,6 @@ console.log(event);
 		chatIsClosed = true;
 		setLang = true;
 	} else if (event.data.command === 'open_chat' || event.data.command === 'resize_chat') {
-	console.log('1');
 		chatIsClosed = false;
 	} else if (event.data.command === 'chat_preloaded') {
 		if (setLang) {
