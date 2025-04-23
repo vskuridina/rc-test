@@ -36,7 +36,6 @@ function setRcChatLanguage() {
 }
 
 function receiveMessage(event) {
-	console.log(event);
 /*	if (event.origin !== '<richcall_origin>') {
 		return;
 	}
@@ -46,8 +45,6 @@ function receiveMessage(event) {
 		setLang = true;
 	} else if (event.data.command === 'open_chat') {
 		chatIsClosed = false;
-		console.log('____opened');
-
 	} else if (event.data.command === 'chat_preloaded') {
 		if (setLang) {
 			setRcChatLanguage();
@@ -61,11 +58,8 @@ window.addEventListener("message", receiveMessage, false);
 
   <h1 id="RC_BTN2">RichCall 5.0</h1>
   <h2 id="STATUS">No active call</h2>
-  <!--b>Меню - </b><select id="MENU"><option>default</option></select>&nbsp;<b>Заголовок - </b> <input type="text" id="TITLE"></input>  <br><br-->
-  <b>Caller_ID - </b><input type="text" id="C_ID"></input> <br><br>
-  <b>Caller Name - </b> <input type="text" id="C_NAME"></input>  <br><br>
+  <b>Меню - </b><select id="" onchange="setLocale(this);><option>kk</option><option>ru</option></select>
   <!--b>Ширина - </b> <input type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' id="WIDTH"></input> <br> <br-->
-  <input type="submit" value="Применить" onclick="apply();">
 
   <h2 id="RC_BTN1">Seamless integration with contact center software and IP PBX</h2>
   <p id="RC_BTN">RichCall is not just another "browser-to-browser video chat". It does not simply connect website visitors with video chat channel agents, though it can do it as well.</p>
