@@ -58,7 +58,7 @@ window.addEventListener("message", receiveMessage, false);
 
   <h1 id="RC_BTN2">RichCall 5.0</h1>
   <h2 id="STATUS">No active call</h2>
-  <b>Меню - </b><select id="" onchange="setLocale(this);><option value='kk'>kk</option><option value='ru'>ru</option></select>
+  <b>Меню - </b><select onchange="if (this) setLocale(this);><option value="">select language</option><option value='kk'>kk</option><option value='ru'>ru</option></select>
   <!--b>Ширина - </b> <input type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' id="WIDTH"></input> <br> <br-->
 
   <h2 id="RC_BTN1">Seamless integration with contact center software and IP PBX</h2>
