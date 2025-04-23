@@ -17,7 +17,7 @@ var locale = 'ru';
 var chatIsClosed = true;
 
 function setLocale(loc) {
-	if (locale == loc) {
+	if (locale === loc) {
 		return;
 	}
 	console.log('setLocale: ' + loc);
@@ -47,6 +47,7 @@ console.log(event);
 		chatIsClosed = true;
 		setLang = true;
 	} else if (event.data.command === 'activate_chat') {
+	console.log('1');
 		chatIsClosed = false;
 	} else if (event.data.command === 'chat_preloaded') {
 		if (setLang) {
@@ -62,7 +63,7 @@ window.addEventListener("message", receiveMessage, false);
 	<div align = center>
 		<h1>RichCall</h1>
 		<b>Выберите язык: </b>
-		<select onchange="if (this.value) setLocale(this.value);">
+		<select onchange="setLocale(this.value);">
 			<option value='ru'>ru</option>
 			<option value='kk'>kk</option>
 		</select>
