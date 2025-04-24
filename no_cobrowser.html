@@ -7,10 +7,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" href="style.css">
 <script>
-var rcChatUrl = "https://rcbox-qa.richcall.io:9443/js/richcall.widget.js?externalActor=RC_BTN&logLevel=Debug&widget-code=0001-";
+var rcChatUrl;
 var setLang = true;
-var locale = 'RU';
+var locale = 'ru';
 var chatIsClosed = true;
+var queueId = { ru : 'c584dbbb-db90-4b12-a78a-836b28def536', kk : '2d7599a7-cc9a-40d4-a99f-d7592594f052' };
 
 function setLocale(loc) {
 	if (locale === loc) {
@@ -23,10 +24,17 @@ function setLocale(loc) {
 	}
 }
 
-function setRcChatLanguage() {return;
-	let rcChat = document.getElementById('rc_chat_frame');
-	if (!rcChat) return;
-	let url = rcChatUrl + locale;
+function setRcChatLanguage() {
+	if (!rcChatUrl) {
+		let rcChat = document.getElementById('rc_chat_frame');
+		if (!rcChat) return;
+		rcChatUrl = new URL(rcChat.src);
+	}
+	
+	let params = rcChat.searchParams;
+	params.set("locale", locale);
+	params.set("queue-id", queueId[locale]);
+	let url = rcChatUrl.origin + rcChatUrl.pathname + '?' + params.toString();
 	console.log(url);
 	document.getElementById('rc_chat_frame').src = url;
 	setLang = false;
@@ -58,15 +66,15 @@ window.addEventListener("message", receiveMessage, false);
 		<h1>RichCall</h1>
 		<b>Выберите язык: </b>
 		<select onchange="setLocale(this.value);">
-			<option value='RU'>ru</option>
-			<option value='KK'>kk</option>
+			<option value='ru'>ru</option>
+			<option value='kk'>kk</option>
 		</select>
 		<br><br>
 		<button id="RC_BTN">
 			<img style="padding-top:20px;width:50px;" src="https://rcbox-qa.richcall.io:9443/storage/fb747aa2-d217-434b-9bd0-3e46742c930a.svg?fileName=icons8-%D0%BC%D1%83%D0%B7%D1%8B%D0%BA%D0%B0-150_-xxhdpi_.svg">
 			<h2 style="padding-inline:15px;">Позвонить</h2>
 		</button>
-		<script type="text/javascript" src="https://rcbox-qa.richcall.io:9443/js/richcall.widget.js?widget-code=0001-MAIN&externalActor=RC_BTN&logLevel=Debug" async></script>
+		<script type="text/javascript" src="https://rcbox-qa.richcall.io:9443/js/richcall.widget.js?externalActor=RC_BTN&widget-code=0001-MAIN&logLevel=Debug" async></script>
 	<div>
 </body>
 </html>
