@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" href="style.css">
 <script>
-var rcChatUrl = "https://rcbox-qa.richcall.io:9443/js/richcall.widget.js?externalActor=RC_BTN&logLevel=Debug&widget-code=0001-"
+var rcChatUrl = "https://rcbox-qa.richcall.io:9443/js/richcall.widget.js?externalActor=RC_BTN&logLevel=Debug&widget-code=0001-";
 var setLang = true;
 var locale = 'RU';
 var chatIsClosed = true;
@@ -23,7 +23,7 @@ function setLocale(loc) {
 	}
 }
 
-function setRcChatLanguage() {
+function setRcChatLanguage() {return;
 	let rcChat = document.getElementById('rc_chat_frame');
 	if (!rcChat) return;
 	let url = rcChatUrl + locale;
