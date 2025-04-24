@@ -31,7 +31,7 @@ function setRcChatLanguage() {
 		rcChatUrl = new URL(rcChat.src);
 	}
 	
-	let params = rcChat.searchParams;
+	let params = rcChatUrl.searchParams;
 	params.set("locale", locale);
 	params.set("queue-id", queueId[locale]);
 	let url = rcChatUrl.origin + rcChatUrl.pathname + '?' + params.toString();
