@@ -4,16 +4,12 @@
   <meta charset="utf-8">
   <title>Aurus RichCall 5.0</title>
   <link rel="icon" type="image/x-icon" href="https://pages.github.com/favicon.ico">
-  <!--link rel="icon" type="image/png" href="https://rcbox-qa.richcall.io:9443/assets/icons/richcall.icon.150x150.png" sizes="150x150">
-  <link rel="icon" type="image/png" href="https://rcbox-qa.richcall.io:9443/assets/icons/richcall.icon.250x250.png" sizes="250x250">
-  <link rel="apple-touch-icon-precomposed" type="image/png" href="https://rcbox-qa.richcall.io:9443/admin/assets/icons/richcall.icon.250x250.png">
-  <meta name="msapplication-TileImage" content="https://rcbox-qa.richcall.io:9443/assets/icons/richcall.icon.250x250.png"-->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" href="style.css">
 <script>
-var rcChatUrl;
+var rcChatUrl = "https://rcbox-qa.richcall.io:9443/js/richcall.widget.js?externalActor=RC_BTN&logLevel=Debug&widget-code=0001-"
 var setLang = true;
-var locale = 'ru';
+var locale = 'RU';
 var chatIsClosed = true;
 
 function setLocale(loc) {
@@ -28,11 +24,9 @@ function setLocale(loc) {
 }
 
 function setRcChatLanguage() {
-	if (!rcChatUrl) {
-		rcChatUrl = document.getElementById('rc_chat_frame')?.src;
-		if (!rcChatUrl) return;
-	}
-	document.getElementById('rc_chat_frame').src = rcChatUrl + '&locale=' + locale ;
+	let rcChat = document.getElementById('rc_chat_frame');
+	if (!rcChat) return;
+	rcChat.src = rcChatUrl + locale;
 	setLang = false;
 }
 
@@ -62,8 +56,8 @@ window.addEventListener("message", receiveMessage, false);
 		<h1>RichCall</h1>
 		<b>Выберите язык: </b>
 		<select onchange="setLocale(this.value);">
-			<option value='ru'>ru</option>
-			<option value='kk'>kk</option>
+			<option value='RU'>ru</option>
+			<option value='KK'>kk</option>
 		</select>
 		<br><br>
 		<button id="RC_BTN">
