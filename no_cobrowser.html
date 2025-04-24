@@ -26,7 +26,7 @@ function setLocale(loc) {
 function setRcChatLanguage() {
 	let rcChat = document.getElementById('rc_chat_frame');
 	if (!rcChat) return;
-	rcChat.src = rcChatUrl + locale;
+	document.getElementById('rc_chat_frame').src = rcChatUrl + locale;
 	setLang = false;
 }
 
