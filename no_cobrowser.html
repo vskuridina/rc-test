@@ -12,6 +12,7 @@ var setLang = true;
 var locale = 'ru';
 var chatIsClosed = true;
 var queueId = { ru : 'c584dbbb-db90-4b12-a78a-836b28def536', kk : '2d7599a7-cc9a-40d4-a99f-d7592594f052' };
+var queueCode = { ru : 'rrrrr', kk : 'kkkkk' };
 
 function setLocale(loc) {
 	if (locale === loc) {
@@ -35,7 +36,9 @@ function setRcChatLanguage() {
 	
 	let params = rcChatUrl.searchParams;
 	params.set("locale", locale);
-	params.set("queue-id", queueId[locale]);
+	params.delete("queue-id");
+	params.set("queue-code", queueCode[locale]);
+	//params.set("queue-id", queueId[locale]);
 	let url = rcChatUrl.origin + rcChatUrl.pathname + '?' + params.toString();
 	
 	document.getElementById('rc_chat_frame').src = url;
@@ -44,14 +47,13 @@ function setRcChatLanguage() {
 }
 
 function receiveMessage(event) {
-console.log(event);
+	console.log(event);
 /*	if (event.origin !== '<richcall_origin>') {
 		return;
 	}
 */
 	if (event.data.command === 'close_chat') {
 		chatIsClosed = true;
-		//setLang = true;
 	} else if (event.data.command === 'open_chat' || event.data.command === 'resize_chat') {
 		chatIsClosed = false;
 	} else if (event.data.command === 'chat_preloaded') {
