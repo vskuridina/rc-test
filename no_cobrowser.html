@@ -9,10 +9,9 @@
 <script>
 var rcChatUrl;
 var setLang = true;
-var locale = 'ru';
 var chatIsClosed = true;
-var queueId = { ru : 'c584dbbb-db90-4b12-a78a-836b28def536', kk : '2d7599a7-cc9a-40d4-a99f-d7592594f052' };
-var queueCode = { ru : 'rrrrr', kk : 'kkkkk' };
+var locale = 'ru'; // начальное значение. будет применено при первой загрузке виджета
+var queueCode = { ru : 'rrrrr', kk : 'kkkkk' }; // код очереди настраивается в АРМ Администратора
 
 function setLocale(loc) {
 	if (locale === loc) {
@@ -38,9 +37,7 @@ function setRcChatLanguage() {
 	params.set("locale", locale);
 	params.delete("queue-id");
 	params.set("queue-code", queueCode[locale]);
-	//params.set("queue-id", queueId[locale]);
 	let url = rcChatUrl.origin + rcChatUrl.pathname + '?' + params.toString();
-	
 	document.getElementById('rc_chat_frame').src = url;
 	setLang = false;
 	console.log(url);
