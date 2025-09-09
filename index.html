@@ -47,6 +47,22 @@
       "2bRn2b": true, "logic_url_wtf": false, "url_test": "рас рас рас", "name_v1": "test_k9", 
       "data_agreement": true
     }
+	
+	function simulateHeavyLoad(duration) {
+  const start = Date.now();
+  while (Date.now() - start < duration) {
+    // Perform a dummy operation to consume time
+    let result = 0;
+    for (let i = 0; i < 100000; i++) {
+      result += Math.sqrt(i);
+    }
+  }
+}
+
+// Call this function early in your script to introduce a delay
+simulateHeavyLoad(5000); // Simulate a 5-second heavy load
+
+consloe.log('delayed');
 
 </script>
 </head>
