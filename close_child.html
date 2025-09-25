@@ -39,7 +39,7 @@
         ) {
           return;
         }
-        const info = event.data.event + " " + event.data.sessionId + " " + event.data.errorCode ?? "";
+        const info = event.data.event + " " + event.data.sessionId + " " + (event.data.errorCode ?? "");
         console.log("Parent window received an event: " + info);
         document.getElementById("STATUS").innerHTML = info;
         if (event.data.event === 'SESSION_STOPPED') {
