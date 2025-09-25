@@ -10,13 +10,14 @@
   <body>
     <h1>RichCall 5.x</h1>
     <h2 id="STATUS">No active call</h2>
-    <div onclick="openChild()">Открыть ричкол в отдельном окне по ссылке</div>
+    <a onclick="openChild()">Click me to open a new window</a>
     
 
     <script>
       var childWindow;
 
       function openChild() {
+        closeChild();
         childWindow = window.open(
           "https://rcbox-qa.richcall.io:9443/client?widget-code=0001-MAIN",
           (target = "_blank"),
