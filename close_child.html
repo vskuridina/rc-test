@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Aurus RichCall</title>
+    <link rel="icon" type="image/x-icon" href="https://pages.github.com/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <script>
+      var RICHCALL_EXTRA_ATTRIBUTES = {
+        field1: "value1",
+        field2: true,
+        field3: "Value 3",
+        phone1: "+7(234)56-78-999",
+        user_agent: navigator.userAgent,
+        site_page: window.location.href,
+        hidden3: "+7(913)456-12-00",
+        name: "Сьюзен",
+        "2bRn2b": true,
+        logic_url_wtf: false,
+        url_test: "рас рас рас",
+        name_v1: "test_k9",
+        data_agreement: true,
+      };
+    </script>
+  </head>
+  <body>
+    <h1 id="RC_BTN1">RichCall 5.0</h1>
+    <p onclick="openChild()">Открыть ричкол в отдельном окне по ссылке</p>
+    <h2 id="STATUS">No active call</h2>
+
+    <script>
+      function openChild() {
+        var childWindow = window.open(
+          "https://rcbox-qa.richcall.io:9443/client?widget-code=0001-MAIN",
+          (target = "_blank"),
+          "width=500, height=600"
+        );
+      }
+
+      function closeChild() {
+        if (childWindow && !childWindow.closed) { // Check if it exists and is not already closed
+            childWindow.close();
+        }
+    }
+
+      function receiveMessage(event) {
+        if (
+          event.origin !== "https://rcbox-qa.richcall.io:9443" ||
+          !event.data.event ||
+          event.data.event === "chat_status"
+        ) {
+          return;
+        }
+        var info = event.data.event + " " + event.data.sessionId + " " + event.data.errorCode ?? "";
+        console.log("Parent window received an event: " + info);
+        document.getElementById("STATUS").innerHTML = info;
+        if (event.data.event === 'SESSION_STOPPED') {
+          closeChild();
+        }
+      }
+      window.addEventListener("message", receiveMessage, false);
+    </script>
+  </body>
+</html>
