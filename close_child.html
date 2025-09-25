@@ -31,7 +31,7 @@
 
     <script>
       function openChild() {
-        var childWindow = window.open(
+        let childWindow = window.open(
           "https://rcbox-qa.richcall.io:9443/client?widget-code=0001-MAIN",
           (target = "_blank"),
           "width=500, height=600"
@@ -52,7 +52,7 @@
         ) {
           return;
         }
-        var info = event.data.event + " " + event.data.sessionId + " " + event.data.errorCode ?? "";
+        const info = event.data.event + " " + event.data.sessionId + " " + event.data.errorCode ?? "";
         console.log("Parent window received an event: " + info);
         document.getElementById("STATUS").innerHTML = info;
         if (event.data.event === 'SESSION_STOPPED') {
