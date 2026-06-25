@@ -80,14 +80,16 @@
       console.log('[rc-test] holdDomDelay completed');
     }
 
-    // Injects async script that loads N seconds — DOM is not blocked, but complete is delayed.
+    // Hidden iframe loads httpbin /delay/ — DOM is not blocked, but complete is delayed.
+    // Script tag causes ERR_BLOCKED_BY_ORB (JSON is not valid JS); iframe navigation does not.
     // httpbin /delay/ accepts whole seconds only (ms value is rounded up).
     function holdComplete(duration) {
       if (!duration) return;
 
       var sec = Math.max(1, Math.ceil(duration / 1000));
       document.write(
-        '<script async src="https://httpbin.org/delay/' + sec + '"><\/script>'
+        '<iframe src="https://httpbin.org/delay/' + sec + '" ' +
+        'title="rc-test complete hold" style="display:none" id="__rc_complete_hold"></iframe>'
       );
       console.log('[rc-test] holdComplete started: ' + duration + 'ms, readyState=' + document.readyState);
     }
