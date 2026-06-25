@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>rc-test complete hold</title>
+</head>
+<body>
+<script>
+  (function () {
+    var ms = Number(new URLSearchParams(location.search).get('ms')) || 0;
+    if (!ms) {
+      return;
+    }
+
+    var end = Date.now() + ms;
+    while (Date.now() < end) {
+      var result = 0;
+      for (var i = 0; i < 100000; i++) {
+        result += Math.sqrt(i);
+      }
+    }
+  })();
+</script>
+</body>
+</html>
