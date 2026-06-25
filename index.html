@@ -81,19 +81,18 @@
       console.log('[rc-test] holdDomDelay completed');
     }
 
-    // Slow image load after interactive — delays complete only, not DOM build.
-    // httpbin /delay/ is max 10s.
+    // Appends iframe after interactive — delays complete only, not DOM build.
     function startCompleteHold() {
       var duration = Number(localStorage.getItem("COMPLETE_DELAY"));
       if (!duration) return;
 
-      var sec = Math.min(10, Math.max(1, Math.ceil(duration / 1000)));
-      var img = document.createElement("img");
-      img.style.display = "none";
-      img.id = "__rc_complete_hold";
-      img.src = "https://httpbin.org/delay/" + sec;
-      document.body.appendChild(img);
-      console.log('[rc-test] holdComplete started: ' + duration + 'ms (~' + sec + 's), readyState=' + document.readyState);
+      var iframe = document.createElement("iframe");
+      iframe.style.display = "none";
+      iframe.title = "rc-test complete hold";
+      iframe.id = "__rc_complete_hold";
+      iframe.src = "hold-complete.html?ms=" + duration;
+      document.body.appendChild(iframe);
+      console.log('[rc-test] holdComplete started: ' + duration + 'ms, readyState=' + document.readyState);
     }
 
     holdDomDelay(Number(localStorage.getItem("DOM_DELAY")));
