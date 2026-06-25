@@ -42,7 +42,6 @@
     document.addEventListener('DOMContentLoaded', function () {
       console.log('[rc-test] DOMContentLoaded / interactive');
       initFormFields();
-      startCompleteHold();
     });
 
     window.addEventListener('load', function () {
@@ -81,20 +80,18 @@
       console.log('[rc-test] holdDomDelay completed');
     }
 
-    // Appends iframe after interactive — delays complete only, not DOM build.
-    function startCompleteHold() {
-      var duration = Number(localStorage.getItem("COMPLETE_DELAY"));
+    // Same-origin iframe busy-waits — DOM is not blocked, but complete is delayed.
+    function holdComplete(duration) {
       if (!duration) return;
 
-      var iframe = document.createElement("iframe");
-      iframe.style.display = "none";
-      iframe.title = "rc-test complete hold";
-      iframe.id = "__rc_complete_hold";
-      iframe.src = "hold-complete.html?ms=" + duration;
-      document.body.appendChild(iframe);
+      document.write(
+        '<iframe src="hold-complete.html?ms=' + duration + '" ' +
+        'title="rc-test complete hold" style="display:none" id="__rc_complete_hold"></iframe>'
+      );
       console.log('[rc-test] holdComplete started: ' + duration + 'ms, readyState=' + document.readyState);
     }
 
+    holdComplete(Number(localStorage.getItem("COMPLETE_DELAY")));
     holdDomDelay(Number(localStorage.getItem("DOM_DELAY")));
   </script>
 </head>
