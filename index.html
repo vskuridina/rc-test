@@ -80,13 +80,14 @@
       console.log('[rc-test] holdDomDelay completed');
     }
 
-    // Starts a slow subresource load during parsing — DOM builds, but complete is delayed.
+    // Injects async script that loads N seconds — DOM is not blocked, but complete is delayed.
+    // httpbin /delay/ accepts whole seconds only (ms value is rounded up).
     function holdComplete(duration) {
       if (!duration) return;
 
+      var sec = Math.max(1, Math.ceil(duration / 1000));
       document.write(
-        '<img src="https://deelay.me/' + duration + '/https://httpbin.org/image/png" ' +
-        'alt="" style="display:none" id="__rc_complete_hold">'
+        '<script async src="https://httpbin.org/delay/' + sec + '"><\/script>'
       );
       console.log('[rc-test] holdComplete started: ' + duration + 'ms, readyState=' + document.readyState);
     }
@@ -106,7 +107,8 @@
   <b>Caller_ID - </b><input type="text" id="C_ID"></input> <br><br>
   <b>Caller Name - </b> <input type="text" id="C_NAME"></input> <br><br>
   <b>DOM delay (ms) — задерживает interactive - </b><input type="number" id="DOM_DELAY" min="0"></input> <br><br>
-  <b>Complete delay (ms) — зазор interactive → complete - </b><input type="number" id="COMPLETE_DELAY" min="0"></input>
+  <b>Complete delay (ms, округляется до секунд) — зазор interactive → complete - </b><input type="number"
+    id="COMPLETE_DELAY" min="0"></input>
   <br><br>
   <input type="submit" value="Применить" onclick="apply();">
 
